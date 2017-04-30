@@ -35,14 +35,24 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
-    J = sum(-y .* log(sigmoid(X * theta)) - (1-y).*log(1-sigmoid(X * theta)))/m + (lambda/(2*m))*(sum(theta.*theta)-theta(1)*theta(1));
+    J = sum(-y .* log(sigmoid(X * theta)) - (1-y).*log(1-sigmoid(X * theta)))/m + (lamda/(2*m))*sum(theta.*theta);
+    
 for i = 1:1:size(theta)
     grad(i)= sum((sigmoid(X*theta)-y).*X(:,i))/m;
 end
 
  temp = theta;
  temp(1) = 0; 
- grad = grad+ (lambda/m)* temp;
+ 
+ grad = grad+ (lamda/m)* temp()
+
+
+
+
+
+
+
+
 % =============================================================
 
 grad = grad(:);

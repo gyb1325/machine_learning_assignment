@@ -23,9 +23,7 @@ p = zeros(size(X, 1), 1);
 X = [ones(m,1) X];
 
 a1=sigmoid(X*(Theta1'));
-m = size(a1, 1);
-a1 = [ones(m,1) a1];
-output =sigmoid(a1*(Theta2'));
+output =sigmoid(a1*(Theta2));
 [v, p]= max(output, [], 2);
 
 
