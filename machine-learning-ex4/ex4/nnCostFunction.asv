@@ -73,8 +73,8 @@ for i = 1:1:m
 end
 J = sum(sum(-log(sigmoid(temp*Theta2')).*output_mat   - log(1-sigmoid(temp*Theta2')).*(1-output_mat)))/m +  lambda*(sum(sum(Theta1.*Theta1))-sum(Theta1(:,1).*Theta1(:,1))  + sum(sum(Theta2.*Theta2))-sum(Theta2(:,1).*Theta2(:,1)))/(2*m);
 
-DELTA2 =  zeros(num_labels,hidden_layer_size+1);
-DELTA1 =  zeros(hidden_layer_size, n+1);
+DELTA2 =  zeros(num_labels+1,hidden_layer_size);
+DELTA1 =  zeros(hidden_layer_size, n);
 for i = 1:1:m
     z2_temp = X(i,:)*Theta1';
     a2 = sigmoid(z2_temp);
@@ -88,10 +88,9 @@ for i = 1:1:m
     DELTA2 = DELTA2+ (delta_3'*a2);
     DELTA1 = DELTA1+ delta_2'*( X(i,:));
 end;
-Theta1_grad(:,2:end) = DELTA1(:,2:end)/m + lambda*Theta1(:,2:end)/m;
-Theta2_grad(:,2:end) = DELTA2(:,2:end)/m+ lambda*Theta2(:,2:end)/m;
-Theta1_grad(:,1) = DELTA1(:,1)/m ;
-Theta2_grad(:,1) = DELTA2(:,1)/m;
+Theta1_grad(:,2:end) = DELTA1/m + lambda*Theta1(:,2:end)/m;
+Theta2_grad(:,2:end) = DELTA2/m+ lambda*Theta2(:,2:end)/m;
+
 
 
 
