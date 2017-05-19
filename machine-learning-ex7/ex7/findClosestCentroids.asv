@@ -21,18 +21,9 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 
 num = size(X,1);
-min_value = 0;
 for i=1:num
    for j = 1:K
-       dis_temp = X(i,:)-centroids(j,:);
-       dis = dis_temp*(dis_temp');
-          if(j ==1)
-            min_value = dis;
-            idx(i) = j;
-          elseif (dis<min_value)
-              min_value = dis;
-              idx(i) = j;
-         end
+       dis_temp = X(i,:)-centroids(j,:)
    end
 end
 

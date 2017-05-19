@@ -28,13 +28,10 @@ centroids = zeros(K, n);
 cnt = zeros(K);
 K_matix = zeros(K,n); 
 for i = 1:m
-    K_matix(idx(i),:)=K_matix(idx(i),:) + X(i,:);
-    cnt(idx(i)) =cnt(idx(i))+1;
+    K_matix(idx(i),:)=
 end
 
-for i = 1:K
-    centroids(i,:) =  K_matix(i,:)/cnt(i);
-end
+
 
 
 
